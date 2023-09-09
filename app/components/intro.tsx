@@ -17,7 +17,8 @@ export default function Intro() {
         <div className={`relative`}>
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{
               type: 'tween',
               duration: 0.2,
@@ -70,7 +71,6 @@ export default function Intro() {
         <Link
           href="#contact"
           className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
-          
         >
           Contact me here
           <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />

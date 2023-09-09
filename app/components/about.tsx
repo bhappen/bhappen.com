@@ -8,8 +8,9 @@ export default function About() {
     <motion.section
       className={`text-center leading-8 max-w-[45rem] mb-28 sm:mb-40`}
       initial={{ opacity: 0, y: 100 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{delay: 0.175}}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.175 }}
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3">
