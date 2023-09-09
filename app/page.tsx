@@ -1,4 +1,3 @@
-'use client'
 import Intro from './components/intro'
 import SectionDivider from './components/section-divider'
 import About from './components/about'

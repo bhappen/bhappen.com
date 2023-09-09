@@ -6,15 +6,11 @@ import SectionHeading from './section-heading'
 export default function About() {
   return (
     <motion.section
-      className={`text-center leading-8 max-w-[45rem] mb-28 sm:mb-40`}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
+      className="mb-28 max-w-[45rem] text-center leading-8 sm:mb-40 scroll-mt-28"
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.175 }}
-      variants={{
-        visible: { opacity: 1, y: 0 },
-        hidden: { opacity: 0, y: 100 },
-      }}
+      id="about"
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3">

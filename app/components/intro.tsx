@@ -16,16 +16,11 @@ export default function Intro() {
       <div className={`flex flex-col items-center justify-center`}>
         <div className={`relative`}>
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{
               type: 'tween',
               duration: 0.2,
-            }}
-            variants={{
-              visible: { opacity: 1, scale: 1 },
-              hidden: { opacity: 0, scale: 0 },
             }}
           >
             <Image
@@ -39,7 +34,7 @@ export default function Intro() {
             />
           </motion.div>
           <motion.span
-            className={`absolute text-3xl bottom-0 right-0`}
+            className="absolute bottom-0 right-0 text-3xl"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -70,7 +65,9 @@ export default function Intro() {
         className={`flex flex-col sm:flex-row items-center justify-center gap-4 px-4 text-lg`}
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
+        transition={{
+          delay: 0.1,
+        }}
       >
         <Link
           href="#contact"
