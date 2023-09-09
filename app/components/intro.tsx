@@ -1,18 +1,35 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BsArrowRight, BsLinkedin } from 'react-icons/bs'
 import { FaGithubSquare } from 'react-icons/fa'
 import { HiDownload } from 'react-icons/hi'
+import { useInView } from 'react-intersection-observer'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 import portraitPhoto from '@/public/portrait.jpg'
+import { useActiveSectionContext } from '../context/active-section-context'
 
 export default function Intro() {
+  const { setActiveSection, timeOfLastClick } = useActiveSectionContext()
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+  })
+
+  useEffect(() => {
+    if (inView && Date.now() - timeOfLastClick > 1000) {
+      setActiveSection('Home')
+    }
+  }, [inView, setActiveSection, timeOfLastClick])
+
   return (
-    <div className={`text-center max-w-[50rem] mb-28 sm:mb-0`}>
+    <section
+      className={`text-center max-w-[50rem] mb-28 sm:mb-0 scroll-mt-[100rem]`}
+      id="home"
+      ref={ref}
+    >
       <div className={`flex flex-col items-center justify-center`}>
         <div className={`relative`}>
           <motion.div
@@ -102,6 +119,6 @@ export default function Intro() {
           <FaGithubSquare />
         </a>
       </motion.div>
-    </div>
+    </section>
   )
 }
