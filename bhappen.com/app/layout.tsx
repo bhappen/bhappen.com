@@ -1,14 +1,8 @@
 'use client'
 import './globals.css'
 import { useEffect, useState } from 'react'
-import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Header from './components/header'
-
-export const metadata: Metadata = {
-  title: 'Alex | Personal Portfolio',
-  description: 'Alex is a full-stack developer with 2 years of experience.',
-}
 
 const inter = Inter({ subsets: ['latin'] })
 
