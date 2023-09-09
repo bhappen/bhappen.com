@@ -24,8 +24,8 @@ export default function Intro() {
               duration: 0.2,
             }}
             variants={{
-              visible: { opacity: 0, scale: 0 },
-              hidden: { opacity: 1, scale: 1 },
+              visible: { opacity: 1, scale: 1 },
+              hidden: { opacity: 0, scale: 0 },
             }}
           >
             <Image
@@ -40,13 +40,17 @@ export default function Intro() {
           </motion.div>
           <motion.span
             className={`absolute text-3xl bottom-0 right-0`}
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial="hidden"
+            animate="visible"
             transition={{
               type: 'spring',
               stiffness: 125,
               delay: 0.1,
               duration: 0.7,
+            }}
+            variants={{
+              visible: { opacity: 1, scale: 1 },
+              hidden: { opacity: 0, scale: 0 },
             }}
           >
             👋
@@ -56,8 +60,12 @@ export default function Intro() {
 
       <motion.h1
         className={`mb-10 mt-4 px-4 text-2xl sm:text-4xl !leading-[1.5]`}
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: { opacity: 0, y: 100 },
+          visible: { opacity: 1, y: 0 },
+        }}
       >
         {/* !leading == important tag. This will override the text default spacing */}
         <span className="font-bold">Hello, I'm Alex.</span> I'm a{' '}
@@ -68,9 +76,13 @@ export default function Intro() {
       </motion.h1>
       <motion.div
         className={`flex flex-col sm:flex-row items-center justify-center gap-4 px-4 text-lg`}
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial="hidden"
+        animate="visible"
         transition={{ delay: 0.1 }}
+        variants={{
+          hidden: { opacity: 0, y: 100 },
+          visible: { opacity: 1, y: 0 },
+        }}
       >
         <Link
           href="#contact"
