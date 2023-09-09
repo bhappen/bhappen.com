@@ -7,10 +7,14 @@ export default function About() {
   return (
     <motion.section
       className={`text-center leading-8 max-w-[45rem] mb-28 sm:mb-40`}
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true }}
       transition={{ delay: 0.175 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 100 },
+      }}
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3">

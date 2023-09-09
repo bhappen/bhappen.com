@@ -16,12 +16,16 @@ export default function Intro() {
       <div className={`flex flex-col items-center justify-center`}>
         <div className={`relative`}>
           <motion.div
-            initial={{ opacity: 0, scale: 0 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
             transition={{
               type: 'tween',
               duration: 0.2,
+            }}
+            variants={{
+              visible: { opacity: 0, scale: 0 },
+              hidden: { opacity: 1, scale: 1 },
             }}
           >
             <Image
