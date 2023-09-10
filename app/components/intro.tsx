@@ -1,28 +1,18 @@
 'use client'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { BsArrowRight, BsLinkedin } from 'react-icons/bs'
 import { FaGithubSquare } from 'react-icons/fa'
 import { HiDownload } from 'react-icons/hi'
-import { useInView } from 'react-intersection-observer'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
+import useSectionInView from '../hooks/useSectionInView'
 import portraitPhoto from '@/public/portrait.jpg'
-import { useActiveSectionContext } from '../context/active-section-context'
 
 export default function Intro() {
-  const { setActiveSection, timeOfLastClick } = useActiveSectionContext()
-  const { ref, inView } = useInView({
-    threshold: 0.5,
-  })
-
-  useEffect(() => {
-    if (inView && Date.now() - timeOfLastClick > 1000) {
-      setActiveSection('Home')
-    }
-  }, [inView, setActiveSection, timeOfLastClick])
+  const {ref} = useSectionInView('Home', 0.5)
 
   return (
     <section
