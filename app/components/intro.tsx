@@ -1,18 +1,35 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BsArrowRight, BsLinkedin } from 'react-icons/bs'
 import { FaGithubSquare } from 'react-icons/fa'
 import { HiDownload } from 'react-icons/hi'
+import { useInView } from 'react-intersection-observer'
 
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
 import portraitPhoto from '@/public/portrait.jpg'
+import { useActiveSectionContext } from '../context/active-section-context'
 
 export default function Intro() {
+  const { setActiveSection, timeOfLastClick } = useActiveSectionContext()
+  const { ref, inView } = useInView({
+    threshold: 0.5,
+  })
+
+  useEffect(() => {
+    if (inView && Date.now() - timeOfLastClick > 1000) {
+      setActiveSection('Home')
+    }
+  }, [inView, setActiveSection, timeOfLastClick])
+
   return (
-    <div className={`text-center max-w-[50rem] mb-28 sm:mb-0`}>
+    <section
+      className={`text-center max-w-[50rem] mb-28 sm:mb-0 scroll-mt-[100rem]`}
+      id="home"
+      ref={ref}
+    >
       <div className={`flex flex-col items-center justify-center`}>
         <div className={`relative`}>
           <motion.div
@@ -34,7 +51,7 @@ export default function Intro() {
             />
           </motion.div>
           <motion.span
-            className={`absolute text-3xl bottom-0 right-0`}
+            className="absolute bottom-0 right-0 text-3xl"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -65,12 +82,13 @@ export default function Intro() {
         className={`flex flex-col sm:flex-row items-center justify-center gap-4 px-4 text-lg`}
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.1 }}
+        transition={{
+          delay: 0.1,
+        }}
       >
         <Link
           href="#contact"
           className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
-          
         >
           Contact me here
           <BsArrowRight className="opacity-70 group-hover:translate-x-1 transition" />
@@ -101,6 +119,6 @@ export default function Intro() {
           <FaGithubSquare />
         </a>
       </motion.div>
-    </div>
+    </section>
   )
 }
