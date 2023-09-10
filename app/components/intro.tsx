@@ -12,7 +12,7 @@ import useSectionInView from '../hooks/useSectionInView'
 import portraitPhoto from '@/public/portrait.jpg'
 
 export default function Intro() {
-  const {ref} = useSectionInView('Home', 0.5)
+  const {ref} = useSectionInView('Home', 0.6)
 
   return (
     <section
