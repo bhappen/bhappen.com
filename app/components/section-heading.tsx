@@ -1,11 +1,13 @@
-import React, {ReactNode} from 'react'
+import React, { ReactNode } from 'react'
 
 export interface SectionHeadingProps {
-    children: ReactNode
+  children: ReactNode
 }
 
-export default function SectionHeading({children}: SectionHeadingProps) {
+export default function SectionHeading({ children }: SectionHeadingProps) {
   return (
-    <h2 className="text-center text-3xl font-medium capitalize mb-8">{children}</h2>
+    <h2 className="text-center text-3xl font-medium capitalize mb-8">
+      {children}
+    </h2>
   )
 }

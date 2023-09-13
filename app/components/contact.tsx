@@ -1,14 +1,18 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
+
 import SectionHeading from './section-heading'
+import SubmitButton from './submit-button'
 import useSectionInView from '../hooks/useSectionInView'
 import { sendEmail } from '../actions/sendEmail'
-import SubmitButton from './submit-button'
-import toast from 'react-hot-toast'
 
 export default function Contact() {
   const { ref } = useSectionInView('Contact', 0.75)
+
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
 
   return (
     <motion.section
@@ -33,12 +37,16 @@ export default function Contact() {
         className={`flex flex-col mt-10 dark:text-black`}
         action={async (formData) => {
           const { data, error } = await sendEmail(formData)
-          if(error){
+          if (error) {
             toast.error(error)
             return
           }
 
           toast.success('Email sent successfully')
+
+          // Reset fields
+          setEmail('')
+          setMessage('')
         }}
       >
         <input
@@ -48,6 +56,8 @@ export default function Contact() {
           required
           maxLength={500}
           placeholder="Your email"
+          onChange={(event) => setEmail(event.target.value)}
+          value={email}
         />
         <textarea
           className={`h-52 p-4 my-3 rounded-lg borderGrey dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none`}
@@ -55,6 +65,8 @@ export default function Contact() {
           required
           maxLength={500}
           placeholder="Your message"
+          onChange={(event) => setMessage(event.target.value)}
+          value={message}
         />
         <SubmitButton />
       </form>

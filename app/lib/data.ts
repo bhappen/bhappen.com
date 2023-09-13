@@ -68,7 +68,7 @@ export const experiencesData = [
     title: 'Project Manager & Full-Stack Developer',
     location: 'Calgary, AB',
     description:
-      "Currently, I hold the position of Project Manager and Full-Stack Developer at s01ve Cyber Solutions. My current stack includes React, Next.js, TypeScript, Tailwind, and Firebase.",
+      'Currently, I hold the position of Project Manager and Full-Stack Developer at s01ve Cyber Solutions. My current stack includes React, Next.js, TypeScript, Tailwind, and Firebase.',
     icon: React.createElement(FaReact),
     date: '2023 - present',
   },

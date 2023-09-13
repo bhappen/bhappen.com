@@ -2,7 +2,6 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react'
 import type { SectionName } from '../types/sectionName'
 
-
 interface ActiveSectionContextProviderProps {
   children: ReactNode
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import { BsArrowRight, BsLinkedin } from 'react-icons/bs'
 import { FaGithubSquare } from 'react-icons/fa'
 import { HiDownload } from 'react-icons/hi'
-
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -14,7 +13,7 @@ import portraitPhoto from '@/public/portrait.jpg'
 
 export default function Intro() {
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext()
-  const {ref} = useSectionInView('Home', 0.6)
+  const { ref } = useSectionInView('Home', 0.6)
 
   return (
     <section
@@ -33,7 +32,7 @@ export default function Intro() {
             }}
           >
             <Image
-              className={`h-24 w-24 rounded-full object-cover border-[0.35rem] border-white shadow-xl`} // object-cover will perserve the aspect ratio
+              className={`h-36 w-36 rounded-full object-cover border-[0.35rem] border-white shadow-xl`} // object-cover will perserve the aspect ratio
               src={portraitPhoto}
               alt="Alex portrait"
               width={192}
@@ -43,7 +42,7 @@ export default function Intro() {
             />
           </motion.div>
           <motion.span
-            className="absolute bottom-0 right-0 text-3xl"
+            className="absolute bottom-0 right-0 text-4xl"
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -82,9 +81,8 @@ export default function Intro() {
           className="group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 hover:bg-gray-950 active:scale-105 transition"
           href="#contact"
           onClick={() => {
-            setActiveSection("Contact")
+            setActiveSection('Contact')
             setTimeOfLastClick(Date.now())
-
           }}
         >
           Contact me here
